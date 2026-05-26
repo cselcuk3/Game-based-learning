@@ -1,50 +1,9 @@
-# Unity tarafından oluşturulan klasörler ve dosyalar
-/Library/
-/Temp/
-/Obj/
-/Build/
-/Builds/
-/UserSettings/
-
-# MonoDevelop ve Visual Studio tarafından otomatik olarak oluşturulan proje dosyaları
-/*.csproj
-/*.unityproj
-/*.sln
-/*.suo
-/*.tmp
-/*.user
-/*.userprefs
-/*.pidb
-/*.booproj
-/*.svd
-/*.pdb
-/*.mdb
-/*.opendb
-/*.DotSettings
-
-# Unity3D yaygın istisnalar
-/*.apk
-/*.unitypackage
-
-# AssetStore paketleri (içe aktarılırsa, sürüm kontrolünden çıkarıp yeni klonda indirmek daha iyi olabilir)
-/Assets/AssetStoreTools/
-/Assets/AssetStoreTools.meta
-
-# Crashlytics, Firebase vb. genellikle git için uygun olmayan ikili bağımlılıklara sahiptir
-/Assets/Plugins/Android/
-/Assets/Plugins/iOS/
-/Assets/Plugins/WSA/
-
-# Harici/derlenmiş araçlar geçici klasörler oluşturabilir
-/obj/
-
-# Windows Visual Studio geçici dosyaları
-/*.user*
-/*.DotSettings.user
-/_ReSharper.*/
-
-# Mac DS_Store dosyaları
-/.DS_Store
-
-# Linux geçici dosyaları
-*~
+My project/[Ll]ibrary/
+My project/[Tt]emp/
+My project/[Oo]bj/
+My project/[Bb]uild/
+My project/[Bb]uilds/
+My project/[Ll]ogs/
+My project/[Uu]serSettings/
+*.csproj
+*.sln
