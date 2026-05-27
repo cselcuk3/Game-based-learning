@@ -8,6 +8,28 @@ public class EndSceneManager : MonoBehaviour
     public TMP_Text resultTitleText;
     public TMP_Text resultDescriptionText;
 
+    [Header("Audio Settings")]
+    public AudioSource sfxSource;
+    public AudioClip clickSound;
+
+    // Tıklama sesini 0.57. saniyeden başlatarak çalan fonksiyon
+    public void PlayClickSound()
+    {
+        if (sfxSource != null && clickSound != null)
+        {
+            sfxSource.clip = clickSound;
+            if (0.57f < clickSound.length)
+            {
+                sfxSource.time = 0.57f;
+            }
+            else
+            {
+                sfxSource.time = 0f;
+            }
+            sfxSource.Play();
+        }
+    }
+
     private void Start()
     {
         // BattleManager'daki static değişkenden galibiyet durumunu okuyoruz
@@ -40,12 +62,20 @@ public class EndSceneManager : MonoBehaviour
     // Yeniden oyna butonu (BattleScene'i baştan yükler)
     public void RestartGame()
     {
-        SceneManager.LoadScene("BattleScene");
+        StartCoroutine(PlaySoundAndLoadScene("BattleScene"));
     }
 
     // Ana menüye dön butonu
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(PlaySoundAndLoadScene("MainMenu"));
+    }
+
+    // Sesi çalıp 0.25 saniye bekledikten sonra sahneyi yükleyen yardımcı coroutine
+    private System.Collections.IEnumerator PlaySoundAndLoadScene(string sceneName)
+    {
+        PlayClickSound();
+        yield return new WaitForSeconds(0.25f);
+        SceneManager.LoadScene(sceneName);
     }
 }

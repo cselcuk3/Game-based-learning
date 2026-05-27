@@ -80,4 +80,34 @@ public class GridManager : MonoBehaviour
     {
         return transform.position + new Vector3(x * spacing, y * spacing, 0);
     }
+
+    // Belirli bir grid hücresini (Tile) hızlıca 2 kere kırmızı renge çeviren animasyon fonksiyonu
+    public void FlashTileRed(int x, int y)
+    {
+        Transform tileTrans = transform.Find($"Tile_{x}_{y}");
+        if (tileTrans != null)
+        {
+            StartCoroutine(FlashTileCoroutine(tileTrans.gameObject));
+        }
+    }
+
+    private System.Collections.IEnumerator FlashTileCoroutine(GameObject tileObj)
+    {
+        SpriteRenderer sr = tileObj.GetComponent<SpriteRenderer>();
+        if (sr == null) yield break;
+
+        Color originalColor = sr.color;
+        Color flashColor = Color.red;
+
+        // 1. Kırmızı Işık Yanıp Sönmesi
+        sr.color = flashColor;
+        yield return new WaitForSeconds(0.15f);
+        sr.color = originalColor;
+        yield return new WaitForSeconds(0.15f);
+
+        // 2. Kırmızı Işık Yanıp Sönmesi
+        sr.color = flashColor;
+        yield return new WaitForSeconds(0.15f);
+        sr.color = originalColor;
+    }
 }
